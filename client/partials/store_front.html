@@ -1,0 +1,24 @@
+<div ng-controller='StoreFrontController'>
+  <h2>Recent Products</h2>
+  <input type="text" ng-model="search.name"  placeholder="Search products" style="width: 265px; display: block;vertical-align:top;">
+  <div id="productsDisplay | filter: createdAt" style="display: inline-block; vertical-align:top; width:800px; border: 1px solid black;">
+    <div ng-repeat="product in products | filter:search:strict" style="display: inline-block; margin-left: 5px;">
+      <img src={{product.url}} alt={{product.name}} style="width: 80px; height: 100px; margin: 5px 0px;background-color: grey;">
+      <p>{{product.name}}</p>
+      <p>({{product.inventory}} left)</p>
+    </div>
+    <a href="#!/products">show all products</a>
+  </div>
+  <h2>Recent Orders</h2>
+  <div id="ordersDisplay | filter: createdAt" style="display: inline-block; vertical-align:top; width:800px; border: 1px solid black;">
+    <p ng-repeat="order in recentOrders">{{order._customer.name}} purchased ({{order.order_quantity}}) {{order._product.name}}</p>
+    <a href="#!/orders">show all orders</a>
+  </div>
+  <h2>New Customers</h2>
+  <div id="customersDisplay | filter: createdAt" style="display:block; width:800px; border: 1px solid black;">
+    <div ng-repeat="customer in recentCustomers">
+    <div style="width:20px; height:20px; background-color:blue; display: inline-block; vertical-align: center;"></div>
+    <p style="display: inline-block; vertical-align:center;">{{customer.name}} joined the store ({{customer.createdAt}})</p>
+  </div>
+  <a href="#!/customers">show all customers</a>
+</div>

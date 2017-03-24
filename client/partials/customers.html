@@ -1,0 +1,20 @@
+<div ng-controller="CustomersController">
+  <p>Add a new customer</p>
+  <form>
+    Customer Name:<input type="text" name="" value="" ng-model="customer.name">
+    <button type="button" name="button" ng-click="addCustomer(customer)">Add</button>
+  </form>
+  <input type="text" ng-model="search.name"  placeholder="Search by customer name" style="width: 265px;">
+  <table>
+    <thead>
+      <th>Customer Name</th>
+      <th>Created Date</th>
+      <th>Actions</th>
+    </thead>
+    <tr ng-repeat="customer in customers | filter:search:strict">
+      <td>{{customer.name}}</td>
+      <td>{{customer.createdAt}}</td>
+      <td><button class="deleteButton" ng-click="removeCustomer(customer._id)" style="font-weight:bold; color:white; background-color:red;">Remove</button></td>
+    </tr>
+  </table>
+</div>
